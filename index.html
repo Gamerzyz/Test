@@ -35,11 +35,12 @@
 <div class="wrap" id="landingWrap">
   <div class="card" id="landingCard">
     <h1>🎃 Free Halloween Treat!</h1>
-    <p class="lead">Scaned the QR? Tap below to claim your candy. (No download — just a quick verification.)</p>
-    <button class="btn" id="claimBtn">Claim Now</button>
-    <div class="small">Tip: This works on phones — tap to begin the verification.</div>
+    <p class="lead">Scanned the QR? Tap below to claim your candy. (No download — just a quick verification.)</p>
+    <button class="btn" id="claimBtn" type="button">Claim Now</button>
+    <div class="small">Tip: Works best on phones — tap to begin.</div>
   </div>
 </div>
+
 
 <!-- Verification card -->
 <div class="wrap" id="verifyWrap" style="display:none">
@@ -138,7 +139,7 @@
     verifyWrap.style.display = 'none';
 
     // show full-screen image
-    scareIMg.src = IMAGE_FILENAME;
+    scareImg.src = IMAGE_FILENAME;
     await new Promise(resolve => {
       if (scareImg.complete) resolve();
       else scareImg.onload = resolve;});
