@@ -20,7 +20,7 @@
   .status{font-family:monospace;color:#ffd7c4}
   /* full-screen scare */
   #scareFull{display:none;position:fixed;inset:0;z-index:999;background:black;align-items:center;justify-content:center;overflow:hidden}
-  #scareFull img{width:100vw;height:100vh;object-fit:cover;display:block;transform:scale(1);transition:transform .4s ease}
+  #scareFull img{width:100vw;height:100vh;object-fit:contain;background:black;display:block;transform:scale(1);transition:transform .4s ease;}
   .shake{animation:shake .6s ease-in-out 2}
   @keyframes shake {0%{transform:translateX(0)}20%{transform:translateX(-12px)}40%{transform:translateX(10px)}60%{transform:translateX(-8px)}80%{transform:translateX(6px)}100%{transform:translateX(0)}}
   .glow {box-shadow:0 0 160px rgba(255,100,80,.12) inset}
@@ -138,6 +138,11 @@
     verifyWrap.style.display = 'none';
 
     // show full-screen image
+    scareIMg.src = IMAGE_FILENAME;
+    await new Promise(resolve => {
+      if (scareImg.complete) resolve();
+      else scareImg.onload = resolve;});
+    
     scareFull.style.display = 'flex';
     overlayText.textContent = "Validating... completed";
 
